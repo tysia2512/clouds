@@ -1,0 +1,26 @@
+- name: Add alice
+  user:
+    name: alice
+    state: present
+    shell: "/bin/bash"
+    group: dev
+    password: password
+
+- name: Add bob
+  user:
+    name: bob
+    state: present
+    shell: "/bin/bash"
+    group: dev
+    password: password
+
+- name: Add Alice's keys
+  authorized_key:
+    user: alice
+    state: present
+    key: "{{ lookup('file', '/home/ruda/workspace/school/clouds/list2/alice-keys.pub') }}"
+- name: Add Bob's keys
+  authorized_key:
+    user: bob
+    state: present
+    key: "{{ lookup('file', '/home/ruda/workspace/school/clouds/list2/bob-keys.pub') }}"

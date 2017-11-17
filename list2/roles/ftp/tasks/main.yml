@@ -1,0 +1,12 @@
+- name: Ensure vsftpd is installed
+  apt:
+    name: vsftpd
+    state: installed
+- name: Install rsync
+  apt:
+    name: rsync
+    state: installed
+- name: Install ftp config
+  copy:
+    src: vsftpd.conf 
+    dest: /etc/vsftpd.conf

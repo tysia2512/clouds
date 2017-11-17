@@ -1,0 +1,13 @@
+- name: Ensure apache is installed
+  apt:
+    name: apache2
+    state: installed
+- name: Install rsync
+  apt:
+    name: rsync
+    state: installed
+- name: Install site config
+  copy:
+    src: index.html 
+    dest: /var/www/html/index.html
+

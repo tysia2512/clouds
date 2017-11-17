@@ -1,0 +1,5 @@
+[servers]
+35.195.126.109 ansible_user=tysia2512
+35.195.111.127 ansible_user=tysia2512
+[load-balancer]
+35.205.181.81  ansible_user=tysia2512
