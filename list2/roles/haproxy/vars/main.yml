@@ -1,2 +1,3 @@
----
-# vars file for haproxy
+www-servers:
+  - { id: www, addr: "35.195.126.109:80" }
+  - { id: www, addr: "35.195.111.127:80" }

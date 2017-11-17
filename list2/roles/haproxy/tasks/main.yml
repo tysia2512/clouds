@@ -9,3 +9,21 @@
     line: "ENABLED=1"
     state: present
   when: ansible_os_family == 'Debian'
+- name: Install rsync
+  apt:
+    name: rsync
+    state: installed
+- name: Install ftp config
+  copy:
+    src: ../files/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+  notify:
+    - restart haproxy
+
+- name: Append servers to config
+  lineinfile:
+    dest: /etc/haproxy/haproxy.cfg
+    line: "    server {{item.id}} {{item.addr}} check"
+    state: present
+  with_items:
+    "{{www-servers}}"
